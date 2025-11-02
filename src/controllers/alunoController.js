@@ -9,7 +9,7 @@ exports.acessoAluno = async (req, res) => {
 
   try {
     const turmaEncontrada = await prisma.turma.findUnique({
-      where: { nome: turma }, 
+      where: { id: Number(turma) },
     });
 
     if (!turmaEncontrada) {
@@ -18,12 +18,12 @@ exports.acessoAluno = async (req, res) => {
 
     return res.status(200).json({
       message: "Acesso autorizado",
-      aluno:{
+      aluno: {
         nome: nome,
         turma: turmaEncontrada.nome,
         turma_id: turmaEncontrada.id,
-        icon: turmaEncontrada.icon
-      }
+        icon: turmaEncontrada.icon,
+      },
     });
   } catch (err) {
     console.error(err);

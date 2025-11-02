@@ -4,7 +4,7 @@ exports.criarPost = async (req, res) => {
   const { titulo, conteudo, turma_id, professor_email } = req.body;
 
   if (!titulo || !turma_id || !professor_email) {
-    return res.status(400).json({ message: 'Campos obrigatórios: título, turma e professor.' });
+    return res.status(400).json({ message: 'Campos obrigatórios: título, conteúdo, turma e professor.' });
   }
 
   try {
