@@ -9,13 +9,10 @@ const alunoRoutes = require("./src/routes/alunoRoutes");
 const professorRoutes = require("./src/routes/professorRoutes");
 const postRoutes = require("./src/routes/postRoutes");
 
-
 const app = express();
 
-// Servir uploads como estático
 app.use("/uploads", express.static(path.join(__dirname, "./src/uploads")));
 
-// Configuração do CORS
 app.use(
   cors({
     origin: "*",
@@ -24,20 +21,15 @@ app.use(
   })
 );
 
-// Body parser
 app.use(express.json());
 
-// Rotas
 app.use("/acessoaluno", alunoRoutes);
 app.use("/acessoprofessor", professorRoutes);
 app.use("/posts", postRoutes);
 app.use("/turmas", turmaRoutes);
 
-
-
-// Start server
 app.listen(3001, "0.0.0.0", () => {
-  console.log("SERVIDOR RDA");
+  console.log("SERVIDOR Rodando");
 });
 
 module.exports = app;
